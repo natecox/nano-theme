@@ -638,44 +638,25 @@ background color that is barely perceptible."
                       (,dark  (:foreground ,nano-dark-critical
                    ;; :background ,nano-dark-background
                     ))))
-   
+
    ;; --- Header & mode line -------------------------------------------
-   
-   `(mode-line ((,light (:foreground ,nano-light-background
-                         :background ,nano-light-foreground
-                         :box (:line-width 3
-                   :color ,nano-light-foreground
-                   :style nil)))
-        (,dark  (:foreground ,nano-dark-foreground
-             :background ,nano-dark-faded
-                         :box (:line-width 3
-                   :color ,nano-dark-faded
-                   :style nil)))))
+
+   `(mode-line
+     ((,light (:foreground ,nano-light-background :background ,nano-light-salient :box (:line-width 3 :color ,nano-light-salient :style nil)))
+      (,dark  (:foreground ,nano-dark-foreground :background ,nano-light-salient :box (:line-width 3 :color ,nano-light-salient :style nil)))))
+
+   `(mode-line-inactive
+     ((,light (:foreground ,nano-light-background :background ,nano-light-faded :box (:line-width 3 :color ,nano-light-faded :style nil)))
+      (,dark  (:foreground ,nano-dark-faded :background ,nano-dark-subtle :box (:line-width 3 :color ,nano-dark-subtle :style nil)))))
+
    `(mode-line-highlight ((t (:inherit nano-popout))))
    `(mode-line-buffer-id ((t (:weight regular))))
    `(mode-line-emphasis  ((t (:weight regular))))
-               
-   `(mode-line-inactive ((,light (:foreground ,nano-light-background
-                                  :background ,nano-light-faded
-                                  :box (:line-width 3
-                    :color ,nano-light-faded
-                    :style nil)))
-             (,dark  (:foreground ,nano-dark-faded
-                                  :background ,nano-dark-subtle
-                                  :box (:line-width 3
-                    :color ,nano-dark-subtle
-                    :style nil)))))
 
-   `(header-line ((,light (:foreground ,nano-light-foreground
-                           :background ,nano-light-subtle
-                           :inherit nil
-                           :box nil))
-          (,dark  (:foreground ,nano-dark-foreground
-                   :background ,nano-dark-subtle
-                           :inherit nil
-                           :box nil))))
+   `(header-line ((,light (:foreground ,nano-light-foreground :background ,nano-light-subtle :inherit nil :box nil))
+                  (,dark  (:foreground ,nano-dark-foreground :background ,nano-dark-subtle :inherit nil :box nil))))
 
-   
+
    ;; --- Structural ---------------------------------------------------
    '(bold                        ((t (:inherit nano-strong))))
    ;; '(italic                      ((t (:slant italic))))
