@@ -1309,8 +1309,10 @@ background color that is barely perceptible."
 
     '(magit-tag                              ((t (:inherit nano-default-i))))
 
+    ;; --- Persp-mode --------------------------------------------------
 
-    
+    `(persp-selected-face ((t (:foreground ,nano-light-popout))))
+
     ;; --- Terminal ----------------------------------------------------
     '(term-bold        ((t (:inherit nano-strong))))
     '(term-color-black ((t (:inherit default))))
