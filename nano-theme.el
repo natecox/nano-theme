@@ -83,7 +83,7 @@
 ;;
 ;; With GUI, you can mix frames with light and dark mode. Just call
 ;; (nano-new-frame 'light) or (nano-new-frame 'dark)
-;; 
+;;
 ;; Optionally, you can use (nano-mode) to setup recommended settings for
 ;; the theme. Be careful since it will modify your configuration and
 ;; requires a set of specific fonts. This needs to be called before
@@ -215,7 +215,7 @@
   "Faded face is for information that are less important."
   :type 'color :group 'nano-theme-dark)
 
-(defcustom nano-dark-salient "#81A1C1" ;; Frost         / nord  9 
+(defcustom nano-dark-salient "#81A1C1" ;; Frost         / nord  9
   "Salient color is used for information that are important."
   :type 'color :group 'nano-theme-dark)
 
@@ -313,7 +313,7 @@ background color that is barely perceptible."
 
   ;; Use nano fonts
   (setq nano-fonts-use t)
-  
+
   ;; No startup  screen
   (setq inhibit-startup-screen t)
 
@@ -391,13 +391,13 @@ background color that is barely perceptible."
 
   ;; Line spacing (in pixels)
   (setq line-spacing 0)
-  
+
   ;; Vertical window divider
   (setq window-divider-default-right-width 24)
   (setq window-divider-default-places 'right-only)
   (window-divider-mode 1)
 
-  ;; Nicer glyphs for continuation and wrap 
+  ;; Nicer glyphs for continuation and wrap
   (set-display-table-slot standard-display-table
                           'truncation (make-glyph-code ?… 'nano-faded))
   (set-display-table-slot standard-display-table
@@ -412,7 +412,7 @@ background color that is barely perceptible."
 
 ;; (defun inherit (face &optional inherit)
 ;;   "Extract face properties as a property list"
-  
+
 ;;   (let ((tags (list :family :foundry :width :height :weight :slant :underline
 ;;                     :overline :strike-through :box :inverse-video :foreground
 ;;                     :background :stipple :extend :inherit))
@@ -430,7 +430,7 @@ background color that is barely perceptible."
 
 (defun nano-new-frame (&optional mode)
   "This funcion creates a new frame in light or dark MODE."
-  
+
   (interactive)
   (let ((mode (or mode (frame-parameter nil 'background-mode)))
         (background-mode frame-background-mode)
@@ -444,7 +444,7 @@ background color that is barely perceptible."
 
     ;; This forces recomputation of faces on the new frame
     (frame-set-background-mode (selected-frame))
-           
+
     (when (eq mode 'light)
       (set-foreground-color nano-light-foreground)
       (set-background-color nano-light-background))
@@ -456,7 +456,7 @@ background color that is barely perceptible."
     ;; Restore background mode
     (setq frame-background-mode background-mode)
     (frame-set-background-mode selected-frame)
-    
+
     new-frame))
 
 (defun nano-dark ()
@@ -516,7 +516,7 @@ background color that is barely perceptible."
                       'nano-light)))
 
 
-    
+
     ;; (add-to-list 'default-frame-alist `(background-mode . ,mode))
     (add-to-list 'default-frame-alist `(background-color . ,(if (eq mode 'light)
                                                                 nano-light-background
@@ -527,7 +527,7 @@ background color that is barely perceptible."
 
     (custom-set-variables '(widget-image-enable nil)
                           '(x-underline-at-descent-line t))
-    
+
     (set-frame-parameter nil 'background-mode mode)
 ;;    (setq frame-background-mode mode)
 ;;    (setq nano-theme--current mode)
@@ -556,10 +556,10 @@ background color that is barely perceptible."
          `(nano-strong ((,light (:weight bold :foreground ,nano-light-strong))
                         (,dark  (:weight bold :foreground ,nano-dark-strong))))))
 
-  
+
   (custom-theme-set-faces theme
-   
-   ;; --- Base ---------------------------------------------------------   
+
+   ;; --- Base ---------------------------------------------------------
 
    `(default ((,light  (:background ,nano-light-background
                         :foreground ,nano-light-foreground))
@@ -584,7 +584,7 @@ background color that is barely perceptible."
 
    `(nano-subtle-i ((,light (:foreground ,nano-light-subtle))
                     (,dark  (:foreground ,nano-dark-subtle))))
-   
+
    `(nano-faded ((,light  (:foreground ,nano-light-faded))
                  (,dark  (:foreground ,nano-dark-faded))))
 
@@ -592,7 +592,7 @@ background color that is barely perceptible."
                             :background ,nano-light-faded))
                     (,dark  (:foreground ,nano-dark-background
                              :background ,nano-dark-faded))))
-   
+
    `(nano-default ((,light  (:foreground ,nano-light-foreground))
                    (,dark  (:foreground ,nano-dark-foreground))))
 
@@ -601,7 +601,7 @@ background color that is barely perceptible."
                      (,dark  (:foreground ,nano-dark-background
                               :background ,nano-dark-foreground))))
 
-   
+
    `(nano-salient ((,light (:foreground ,nano-light-salient))
                    (,dark  (:foreground ,nano-dark-salient))))
 
@@ -610,7 +610,7 @@ background color that is barely perceptible."
                      (,dark  (:foreground ,nano-dark-background
                               :background ,nano-dark-salient))))
 
-   
+
 
    `(nano-strong-i ((,light (:foreground ,nano-light-background
                              :background ,nano-light-strong
@@ -626,7 +626,7 @@ background color that is barely perceptible."
                              :background ,nano-light-popout))
                     (,dark  (:foreground ,nano-dark-background
                              :background ,nano-dark-popout))))
-   
+
    `(nano-critical ((,light (:foreground ,nano-light-background
                              :background ,nano-light-critical))
                     (,dark  (:foreground ,nano-dark-background
@@ -668,7 +668,7 @@ background color that is barely perceptible."
    '(link                        ((t (:inherit nano-salient))))
    '(fixed-pitch                 ((t (:inherit default))))
    '(fixed-pitch-serif           ((t (:inherit default))))
-   
+
    ;; --- Semantic -----------------------------------------------------
    '(shadow                        ((t (:inherit nano-faded))))
    '(success                       ((t (:inherit nano-salient))))
@@ -701,7 +701,7 @@ background color that is barely perceptible."
    '(tty-menu-disabled-face        ((t (:inherit nano-faded-i))))
    '(tty-menu-enabled-face         ((t (:inherit nano-default-i))))
    '(tty-menu-selected-face        ((t (:inherit nano-salient-i))))
-   
+
    ;; --- Windows divider ----------------------------------------------
    `(window-divider                ((,light (:foreground ,nano-light-background))
                         (,dark  (:foreground ,nano-dark-background))))
@@ -715,13 +715,13 @@ background color that is barely perceptible."
    '(tab-bar-tab                   ((t (:inherit default))))
    '(tab-bar-tab-inactive          ((t (:inherit nano-faded))))
    '(tab-line                      ((t (:inherit default))))
-   
+
    ;; --- Line numbers -------------------------------------------------
    '(line-number                  ((t (:inherit nano-faded))))
    '(line-number-current-line     ((t (:inherit default))))
    `(line-number-major-tick       ((t (:inherit nano-faded))))
    '(line-number-minor-tick       ((t (:inherit nano-faded))))
-   
+
    ;; --- Font lock ----------------------------------------------------
    '(font-lock-comment-face        ((t (:inherit nano-faded))))
    '(font-lock-doc-face            ((t (:inherit nano-faded))))
@@ -767,7 +767,7 @@ background color that is barely perceptible."
     '(company-tooltip-annotation           ((t (:inherit nano-default))))
     '(company-tooltip-annotation-selection ((t (:inherit nano-subtle))))
 
-   
+
    ;; --- Buttons ------------------------------------------------------
    `(custom-button
      ((,light (:foreground ,nano-light-faded
@@ -830,7 +830,7 @@ background color that is barely perceptible."
    '(nano-modeline-active-secondary     ((t (:inherit (nano-faded nano-modeline-active)))))
    '(nano-modeline-active-status-RO     ((t (:inherit nano-popout-i))))
    '(nano-modeline-active-status-RW     ((t (:inherit nano-faded-i))))
-   '(nano-modeline-active-status-**     ((t (:inherit nano-critical))))      
+   '(nano-modeline-active-status-**     ((t (:inherit nano-critical))))
 
    '(nano-modeline-inactive             ((t (:inherit nano-subtle))))
    '(nano-modeline-inactive-name        ((t (:inherit (nano-faded nano-modeline-inactive)))))
@@ -887,7 +887,7 @@ background color that is barely perceptible."
    '(diff-refine-changed            ((t (:inherit nano-popout))))
    '(diff-refine-removed            ((t (:inherit nano-faded
                                          :strike-through t))))
-   
+
    ;; --- Message ------------------------------------------------------
    '(message-cited-text-1           ((t (:inherit nano-faded))))
    '(message-cited-text-2           ((t (:inherit nano-faded))))
@@ -913,7 +913,7 @@ background color that is barely perceptible."
    '(outline-6                      ((t (:inherit nano-strong))))
    '(outline-7                      ((t (:inherit nano-strong))))
    '(outline-8                      ((t (:inherit nano-strong))))
-   
+
    ;; --- Fly spell ----------------------------------------------------
    '(flyspell-duplicate             ((t (:inherit nano-popout))))
    '(flyspell-incorrect             ((t (:inherit nano-popout))))
@@ -1040,7 +1040,7 @@ background color that is barely perceptible."
 
    ;; --- GNUS ---------------------------------------------------------
    '(gnus-button                            ((t (:inherit nano-salient))))
-   '(gnus-cite-1                            ((t (:inherit nano-faded)))) 
+   '(gnus-cite-1                            ((t (:inherit nano-faded))))
    '(gnus-cite-10                           ((t (:inherit nano-faded))))
    '(gnus-cite-11                           ((t (:inherit nano-faded))))
    '(gnus-cite-2                            ((t (:inherit nano-faded))))
@@ -1089,7 +1089,7 @@ background color that is barely perceptible."
    '(gnus-header-name                       ((t (:inherit nano-strong))))
    '(gnus-header-newsgroups                 ((t (:inherit nano-faded))))
    '(gnus-header-subject                    ((t (:inherit nano-default))))
-   
+
    '(gnus-signature                         ((t (:inherit nano-faded))))
    '(gnus-splash                            ((t (:inherit nano-faded))))
    '(gnus-summary-cancelled                 ((t (:inherit nano-faded))))
@@ -1109,7 +1109,7 @@ background color that is barely perceptible."
    '(gnus-summary-normal-undownloaded       ((t (:inherit nano-faded))))
    '(gnus-summary-normal-unread             ((t (:inherit nano-faded))))
    '(gnus-summary-selected                  ((t (:inherit nano-faded))))
-   
+
    ;; --- Elfeed -------------------------------------------------------
     '(elfeed-log-date-face                    ((t (:inherit nano-faded))))
     '(elfeed-log-info-level-face            ((t (:inherit nano-default))))
@@ -1312,6 +1312,10 @@ background color that is barely perceptible."
     ;; --- Persp-mode --------------------------------------------------
 
     `(persp-selected-face ((t (:foreground ,nano-light-popout))))
+
+    ;; --- Selectrum ---------------------------------------------------
+
+    '(selectrum-current-candidate ((t (:inherit nano-salient-i))))
 
     ;; --- Terminal ----------------------------------------------------
     '(term-bold        ((t (:inherit nano-strong))))
